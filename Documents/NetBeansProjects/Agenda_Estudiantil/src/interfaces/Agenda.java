@@ -43,6 +43,7 @@ public class Agenda extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Acceso Agenda Estudiantil");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +90,7 @@ public class Agenda extends javax.swing.JFrame {
 
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Sistemas\\I ciclo\\Proyecto\\9AEDA435.jpeg")); // NOI18N
         fondo.setFocusable(false);
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 0, 1550, 820));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 0, 1540, 820));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -13,7 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import Clases.Exporter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -54,6 +56,13 @@ public class ListTareas extends javax.swing.JFrame {
         
         trsFiltro.setRowFilter(RowFilter.regexFilter(txtFiltro.getText(), columnaABuscar));
     }
+        
+                // FORMATO 03 de Julio de 2016
+        SimpleDateFormat formato1 = new SimpleDateFormat(
+            "dd 'de' MMMM 'de' yyyy", Locale.getDefault());
+        Date fechaDate = new Date();
+        String fecha = formato1.format(fechaDate);
+        
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -122,6 +131,7 @@ public class ListTareas extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Agenda Estudiantil");
         setBackground(new java.awt.Color(13, 67, 113));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,9 +139,9 @@ public class ListTareas extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(13, 67, 113));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FECHA Y HORA ACTUAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Britannic Bold", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        Fecha.setFont(new java.awt.Font("Britannic Bold", 1, 12)); // NOI18N
+        Fecha.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
         Fecha.setForeground(new java.awt.Color(255, 255, 255));
-        Fecha.setText("Fecha ");
+        Fecha.setText("Fecha :  " +fecha);
 
         Hora.setFont(new java.awt.Font("Britannic Bold", 1, 14)); // NOI18N
         Hora.setForeground(new java.awt.Color(255, 255, 255));
@@ -359,7 +369,9 @@ public class ListTareas extends javax.swing.JFrame {
             }
         };
     }
-
+    
+    
+   
     
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 // TODO add your handling code here:
