@@ -11,6 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import Clases.Exporter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 /**
@@ -85,6 +91,7 @@ public class ListTareas extends javax.swing.JFrame {
         textMateria = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         textPrioridad = new javax.swing.JTextField();
+        btnExportar = new javax.swing.JButton();
 
         jLabel13.setText("jLabel13");
 
@@ -183,9 +190,6 @@ public class ListTareas extends javax.swing.JFrame {
         comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fecha", "Materia", "Prioridad", "Tarea", "Completa" }));
 
         txtFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtFiltroKeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtFiltroKeyTyped(evt);
             }
@@ -218,7 +222,7 @@ public class ListTareas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 59, 480, 410));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 59, 480, 420));
 
         btnAñadir.setForeground(new java.awt.Color(0, 51, 255));
         btnAñadir.setText("Añadir Tarea");
@@ -227,30 +231,31 @@ public class ListTareas extends javax.swing.JFrame {
                 btnAñadirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 200, 40));
+        getContentPane().add(btnAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 140, 30));
 
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setText("Eliminar Tarea");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 200, 40));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 140, 30));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, -1, -1));
 
-        btnModificar.setText("Modificar");
+        btnModificar.setText("Modificar Tarea");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 170, 40));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 130, 30));
 
         jPanel5.setBackground(new java.awt.Color(253, 190, 17));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DESCRIPCIÓN DE LA TAREA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Britannic Bold", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         textTarea.setColumns(20);
         textTarea.setRows(5);
+        textTarea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane2.setViewportView(textTarea);
 
         jLabel11.setText("Asignatura");
@@ -319,7 +324,15 @@ public class ListTareas extends javax.swing.JFrame {
                     .add(jLabel4)))
         );
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 470));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 480));
+
+        btnExportar.setText("Exportar tareas a Excel");
+        btnExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, 190, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -427,6 +440,35 @@ public class ListTareas extends javax.swing.JFrame {
     private void txtFiltroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFiltroKeyPressed
+
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+        // TODO add your handling code here:
+        
+         if (tabla.getRowCount() > 0) {
+            JFileChooser chooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de excel", "xls");
+            chooser.setFileFilter(filter);
+            chooser.setDialogTitle("Guardar archivo");
+            chooser.setAcceptAllFileFilterUsed(false);
+            if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                List<JTable> tb = new ArrayList<JTable>();
+                List<String> nom = new ArrayList<String>();
+                tb.add(tabla);
+                nom.add("Tareas");
+                String file = chooser.getSelectedFile().toString().concat(".xls");
+                try {
+                    Exporter e = new Exporter(new File(file), tb, nom);
+                    if (e.export()) {
+                        JOptionPane.showMessageDialog(null, "Los datos fueron exportados correctamente a excel en el directorio seleccionado", "Mensaje de Informacion", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Hubo un error " + e.getMessage(), " Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay datos para exportar","Mensaje de error",JOptionPane.ERROR_MESSAGE);
+        }  
+    }//GEN-LAST:event_btnExportarActionPerformed
     
     /**
      * @param args the command line arguments
@@ -445,6 +487,7 @@ public class ListTareas extends javax.swing.JFrame {
     private javax.swing.JLabel Hora;
     private javax.swing.JButton btnAñadir;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnExportar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> comboFiltro;
     private com.toedter.calendar.JDateChooser dateFecha;

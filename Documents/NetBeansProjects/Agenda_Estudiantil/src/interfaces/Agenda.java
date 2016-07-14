@@ -102,7 +102,7 @@ public class Agenda extends javax.swing.JFrame {
        char contrasenia[]=jpassContrasenia.getPassword();// contraseña
        String contraseniadef= new String(contrasenia);
        
-       if (txtUsuario.getText().equals("Administrador")&& contraseniadef.equals("12345")){
+       if (txtUsuario.getText().equals("ADMIN")&& contraseniadef.equals("1a2b3c")){
            this. dispose();
            JOptionPane.showMessageDialog(null, "Bienvenido\n"
                     +JOptionPane.INFORMATION_MESSAGE);
