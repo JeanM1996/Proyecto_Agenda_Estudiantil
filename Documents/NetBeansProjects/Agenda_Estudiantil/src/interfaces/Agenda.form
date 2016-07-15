@@ -59,7 +59,7 @@
     <Component class="javax.swing.JLabel" name="logo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Usuario\Desktop\Sistemas\I ciclo\Proyecto\Sistemas Infrom&#xe1;ticos y Conputaci&#xf3;n.png"/>
+          <Image iconType="3" name="/Recursos/Sistemas Infrom&#xe1;ticos y Conputaci&#xf3;n.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -145,7 +145,7 @@
     <Component class="javax.swing.JLabel" name="fondo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Usuario\Desktop\Sistemas\I ciclo\Proyecto\9AEDA435.jpeg"/>
+          <Image iconType="3" name="/Recursos/9AEDA435.jpeg"/>
         </Property>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>

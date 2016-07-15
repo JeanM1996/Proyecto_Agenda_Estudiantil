@@ -62,7 +62,7 @@ public class Agenda extends javax.swing.JFrame {
         });
         getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 500, 100, 40));
 
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Sistemas\\I ciclo\\Proyecto\\Sistemas Infromáticos y Conputación.png")); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Sistemas Infromáticos y Conputación.png"))); // NOI18N
         getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 260, 140));
 
         tema.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
@@ -88,7 +88,7 @@ public class Agenda extends javax.swing.JFrame {
         jLabel2.setText("CONTRASEÑA");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(838, 450, 80, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Sistemas\\I ciclo\\Proyecto\\9AEDA435.jpeg")); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/9AEDA435.jpeg"))); // NOI18N
         fondo.setFocusable(false);
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 0, 1540, 820));
 

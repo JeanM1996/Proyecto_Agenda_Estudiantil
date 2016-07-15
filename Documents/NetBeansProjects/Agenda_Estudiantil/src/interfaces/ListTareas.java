@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -30,7 +32,8 @@ public class ListTareas extends javax.swing.JFrame {
     /** Creates new form Agenda */
     public ListTareas() {
         initComponents();
-        
+        Hilo hiloHora = new Hilo();
+        hiloHora.start();
         DefaultTableModel modelo=(DefaultTableModel)tabla.getModel();
         tabla.setRowSorter(new TableRowSorter(modelo));    
     }
@@ -62,6 +65,7 @@ public class ListTareas extends javax.swing.JFrame {
             "dd 'de' MMMM 'de' yyyy", Locale.getDefault());
         Date fechaDate = new Date();
         String fecha = formato1.format(fechaDate);
+        
         
     
     /** This method is called from within the constructor to
@@ -154,9 +158,9 @@ public class ListTareas extends javax.swing.JFrame {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(Fecha, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 211, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 155, Short.MAX_VALUE)
-                .add(Hora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .add(28, 28, 28)
+                .add(Hora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 197, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -355,6 +359,27 @@ public class ListTareas extends javax.swing.JFrame {
             }
         }
         return false;
+    }
+    class Hilo extends Thread {
+
+        @Override
+        public void run() {
+            while (true) {
+                Date date = new Date();
+                int horas = date.getHours();
+                int minutos = date.getMinutes();
+                int segundos = date.getSeconds();
+               // System.out.println(horas + ":" + minutos + ":" + segundos);
+                Hora.setText("Hora : "+horas + ":" + minutos + ":" + segundos);
+
+                try {
+                    //Necesario para que no haya interrupcion
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 
     private FileFilter getFileFilter(){
