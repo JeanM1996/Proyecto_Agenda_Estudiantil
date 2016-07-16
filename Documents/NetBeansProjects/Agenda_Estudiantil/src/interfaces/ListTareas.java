@@ -104,6 +104,7 @@ public class ListTareas extends javax.swing.JFrame {
         textMateria = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         textPrioridad = new javax.swing.JTextField();
+        jcbPrioridad = new javax.swing.JComboBox<>();
         btnExportar = new javax.swing.JButton();
 
         jLabel13.setText("jLabel13");
@@ -143,11 +144,11 @@ public class ListTareas extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(13, 67, 113));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FECHA Y HORA ACTUAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Britannic Bold", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        Fecha.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
+        Fecha.setFont(new java.awt.Font("Britannic Bold", 0, 14)); // NOI18N
         Fecha.setForeground(new java.awt.Color(255, 255, 255));
         Fecha.setText("Fecha :  " +fecha);
 
-        Hora.setFont(new java.awt.Font("Britannic Bold", 1, 14)); // NOI18N
+        Hora.setFont(new java.awt.Font("Britannic Bold", 0, 14)); // NOI18N
         Hora.setForeground(new java.awt.Color(255, 255, 255));
         Hora.setText("Hora");
 
@@ -158,9 +159,8 @@ public class ListTareas extends javax.swing.JFrame {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(Fecha, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 211, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(28, 28, 28)
-                .add(Hora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 197, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 72, Short.MAX_VALUE)
+                .add(Hora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 175, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -238,7 +238,6 @@ public class ListTareas extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 59, 480, 420));
 
-        btnAñadir.setForeground(new java.awt.Color(0, 51, 255));
         btnAñadir.setText("Añadir Tarea");
         btnAñadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,9 +279,24 @@ public class ListTareas extends javax.swing.JFrame {
 
         jLabel4.setText("Prioridad");
 
+        textPrioridad.setBackground(new java.awt.Color(253, 190, 17));
+        textPrioridad.setForeground(new java.awt.Color(253, 190, 17));
+        textPrioridad.setCaretColor(new java.awt.Color(253, 190, 17));
+        textPrioridad.setDisabledTextColor(new java.awt.Color(253, 190, 17));
+        textPrioridad.setEnabled(false);
+        textPrioridad.setOpaque(false);
+        textPrioridad.setSelectedTextColor(new java.awt.Color(253, 190, 17));
+        textPrioridad.setSelectionColor(new java.awt.Color(253, 190, 17));
         textPrioridad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPrioridadActionPerformed(evt);
+            }
+        });
+
+        jcbPrioridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alta", "Media", "Baja" }));
+        jcbPrioridad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbPrioridadActionPerformed(evt);
             }
         });
 
@@ -292,27 +306,31 @@ public class ListTareas extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanel5Layout.createSequentialGroup()
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jPanel5Layout.createSequentialGroup()
+                                .add(jLabel11)
+                                .add(52, 52, 52)
+                                .add(textMateria, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 215, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel5Layout.createSequentialGroup()
+                                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel12)
+                                    .add(jPanel5Layout.createSequentialGroup()
+                                        .add(4, 4, 4)
+                                        .add(jLabel3)))
+                                .add(47, 47, 47)
+                                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(dateFecha, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))))
+                        .add(29, 29, 29))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel5Layout.createSequentialGroup()
                         .add(jLabel4)
                         .add(62, 62, 62)
-                        .add(textPrioridad, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 215, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                        .add(jPanel5Layout.createSequentialGroup()
-                            .add(jLabel11)
-                            .add(52, 52, 52)
-                            .add(textMateria, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 215, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel5Layout.createSequentialGroup()
-                            .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(jLabel12)
-                                .add(jPanel5Layout.createSequentialGroup()
-                                    .add(4, 4, 4)
-                                    .add(jLabel3)))
-                            .add(47, 47, 47)
-                            .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                .add(dateFecha, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))))
-                .add(29, 29, 29))
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jcbPrioridad, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(textPrioridad, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -335,7 +353,9 @@ public class ListTareas extends javax.swing.JFrame {
                 .add(69, 69, 69)
                 .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(textPrioridad, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 42, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel4)))
+                    .add(jLabel4)
+                    .add(jcbPrioridad, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 42, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(51, 51, 51))
         );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 480));
@@ -395,6 +415,8 @@ public class ListTareas extends javax.swing.JFrame {
         };
     }
     
+
+    
     
    
     
@@ -419,8 +441,9 @@ public class ListTareas extends javax.swing.JFrame {
         DefaultTableModel modelo=(DefaultTableModel)tabla.getModel();
         String fecha= new SimpleDateFormat("dd/MM/yyyy").format(dateFecha.getDate());
         //Arreglo
-        String[] datos = {fecha,textMateria.getText(),textPrioridad.getText(),textTarea.getText()};
+        String[] datos = {fecha,textMateria.getText(),jcbPrioridad.getSelectedItem().toString(),textTarea.getText()};
         modelo.addRow(datos);
+
         limpiarCampos();
     }//GEN-LAST:event_btnAñadirActionPerformed
 
@@ -454,10 +477,6 @@ public class ListTareas extends javax.swing.JFrame {
     private void tablaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_tablaMouseReleased
-
-    private void textPrioridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPrioridadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textPrioridadActionPerformed
 
     private void txtFiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyTyped
         // TODO add your handling code here:
@@ -506,6 +525,15 @@ public class ListTareas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No hay datos para exportar","Mensaje de error",JOptionPane.ERROR_MESSAGE);
         }  
     }//GEN-LAST:event_btnExportarActionPerformed
+
+    private void textPrioridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPrioridadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPrioridadActionPerformed
+
+    private void jcbPrioridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbPrioridadActionPerformed
+        // TODO add your handling code here:
+        textPrioridad.setText (jcbPrioridad.getSelectedItem().toString());
+    }//GEN-LAST:event_jcbPrioridadActionPerformed
     
     /**
      * @param args the command line arguments
@@ -542,6 +570,7 @@ public class ListTareas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JComboBox<String> jcbPrioridad;
     private javax.swing.JLabel lblFiltro;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField textMateria;
